@@ -1,3 +1,4 @@
 # DocuBrain
 
+# Description
 DocuBrain is an end-to-end AI system that transforms PDF documents into an interactive knowledge base, enabling users to ask questions and receive accurate, context-aware answers. It combines document ingestion, intelligent retrieval of relevant information, and LLM-powered response generation in a seamless pipeline. Built from scratch to production standards, DocuBrain is scalable, efficient, and ready for real-world deployment. By integrating state-of-the-art NLP techniques with robust software engineering practices, DocuBrain offers a smart, user-friendly solution for document-based question answering.
