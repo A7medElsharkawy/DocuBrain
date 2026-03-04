@@ -6,9 +6,9 @@ services:
       - "27007:27017"
     volumes:
       - mongodata:/data/db
-    environment:
-      - MONGO_IDITDB_ROOT_USERNAME=${MONGO_IDITDB_ROOT_USERNAME}
-      - MONGO_IDITDB_ROOT_PASSWORD=${MONGO_IDITDB_ROOT_PASSWORD}
+    # environment:
+    #   - MONGO_INITDB_ROOT_USERNAME=${MONGO_IDITDB_ROOT_USERNAME}
+    #   - MONGO_INITDB_ROOT_PASSWORD=${MONGO_IDITDB_ROOT_PASSWORD}
     networks:
       - backend
 
