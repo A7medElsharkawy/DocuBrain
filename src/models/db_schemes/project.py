@@ -18,10 +18,10 @@ class Project(BaseModel):
     
 
     @classmethod
-    def get_indexes(cls):
+    def get_indexes(cls): # this function is used to get the indexes for the project collection (index form)
         return [{            
             "key":[
-                ("project_id", 1)
+                ("project_id", 1) # 1 mean ascending order and -1 mean descending order
             ],
             "name":"project_id_index_1",
             "unique": True 
