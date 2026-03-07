@@ -8,7 +8,10 @@ from models import ResponseStatus
 import logging
 from  models.ProjectModel import ProjectModel
 from models.ChunkModel import ChunkModel
-from models.db_schemes import DataChunk
+from models.db_schemes import DataChunk, Asset
+from models.AssetModel import AssetModel
+from models.enums import AssetTypeEnum
+import os
 loggrer = logging.getLogger('uvicorn.error')
 
 data_router = APIRouter(
@@ -19,7 +22,9 @@ data_router = APIRouter(
 @data_router.post("/upload/{project_id}")
 async def upload_data(request:Request,project_id:str, file: UploadFile, settings: Setting = Depends(get_settings)):
 
-    project_model = ProjectModel(db_client=  request.app.db_client)
+    project_model = await ProjectModel.create_instance(
+        db_client=request.app.db_client
+    )
     project = await project_model.get_project_or_create_one(project_id=project_id)
 
     data_controller = DataController()
@@ -38,10 +43,19 @@ async def upload_data(request:Request,project_id:str, file: UploadFile, settings
         return JSONResponse(status_code=400, 
                             content={"signal": ResponseStatus.FILE_UPLOAD_FAILED.value})
 
+    asset_model = await AssetModel.create_instance(db_client= request.app.db_client)
+    asset_resource = Asset(
+        asset_project_id=project.id,
+        asset_type=AssetTypeEnum.FILE.value,
+        asset_name=file_path.split("/")[-1],
+        asset_size=os.path.getsize(file_path),
+    )
+    asset_record = await asset_model.create_asset(asset_resource)
+
     return JSONResponse(
         content={
             "signal": ResponseStatus.UPLOAD_SUCCESS.value,
-            "file_id": file_path.split("/")[-1],
+            "file_id": str(asset_record.id),
         }
 
     )
@@ -55,7 +69,7 @@ async def process_endpoint(request:Request,project_id:str,process_request: Proce
     overlap_size = process_request.overlap_size
     do_rest = process_request.do_reset
 
-    project_model = ProjectModel(db_client=  request.app.db_client)
+    project_model = await ProjectModel.create_instance(db_client=  request.app.db_client)
     project = await project_model.get_project_or_create_one(project_id=project_id)
 
 
