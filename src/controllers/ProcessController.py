@@ -21,6 +21,10 @@ class ProcessController(BaseController):
         file_ext = self.get_file_extension(file_id)
         file_path = os.path.join(self.path, file_id)
 
+        if not os.path.exists(file_path):
+            return None
+
+
         if file_ext == ProcessEnums.TXT.value:
             return TextLoader(file_path, encoding='utf8')
         
@@ -32,6 +36,8 @@ class ProcessController(BaseController):
     def get_file_content(self,file_id:str):
 
         loader = self.get_file_loader(file_id)
+        if loader is None:
+            return None
         return loader.load()
     
     def process_file_content(self,file_id:str,file_content:str, chunk_size:int=100, chunk_overlap:int=20):
