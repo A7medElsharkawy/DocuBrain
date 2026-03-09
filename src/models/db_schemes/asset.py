@@ -1,3 +1,5 @@
+# save asset file path and file name, er can uplad more thatn file for the same project
+
 from datetime import datetime
 from pydantic import BaseModel, Field
 from typing import Optional
