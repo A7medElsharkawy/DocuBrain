@@ -24,6 +24,10 @@ class Setting(BaseSettings):
     GENERATION_DEFAULT_MAX_TOKENS :int= None
     GENERATION_DEFAULT_TEMPERATURE :float= None
 
+    VECTORE_DB_BACKEND : str = None
+    VECTORE_DB_PATH :str = None
+    VECTORE_DB_DISTANCE :str = None
+
     class Config:
         env_file = ".env"
 
