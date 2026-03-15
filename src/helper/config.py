@@ -9,7 +9,20 @@ class Setting(BaseSettings):
 
     MONGO_URI: str
     MONGO_DATABASE: str
+    GERNERATION_BACKEND : str
+    EMBEDDING_BACKEND :str
+    
+    OPENAI_API_KEY :str = None
+    OPEN_AI_URL :str= None
+    COHERE_API_KEY :str= None
 
+    GENERATION_MODEL_ID :str= None
+    EMBEDDDING_MODEL_ID :str= None
+    EMBEDDDING_MODEL_SIZE :int= None
+
+    INPUT_DAFAULT_MAX_CHARACTERS :int= None
+    GENERATION_DEFAULT_MAX_TOKENS :int= None
+    GENERATION_DEFAULT_TEMPERATURE :float= None
 
     class Config:
         env_file = ".env"

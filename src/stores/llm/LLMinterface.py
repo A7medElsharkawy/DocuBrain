@@ -6,7 +6,7 @@ class LLMInterface(ABC):
     def set_generation_models(self, mode_id:str):
         pass
     @abstractmethod
-    def set_embedding_model(self, model_id: str):
+    def set_embedding_model(self, model_id: str,embedding_size: int):
         pass
     @abstractmethod
     def generate_text(self, prompt: str,max_output_tokens: int ,chat_history:list=[],  temperature: float =None):

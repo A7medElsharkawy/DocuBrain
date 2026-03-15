@@ -30,7 +30,7 @@ class OpenAIProvider(LLMInterface):
     def set_generation_models(self, mode_id:str):
         self.gerneration_model_id = mode_id
         
-    def set_embedding_model(self, model_id:str,embedding_size: str):
+    def set_embedding_model(self, model_id:str,embedding_size: int):
         self.embedding_model_id = model_id
         self.embedding_size = embedding_size
         
@@ -88,6 +88,6 @@ class OpenAIProvider(LLMInterface):
     def construct_prompt(self, prompt: str, role: str):
         return {
             "role" : role,
-            "prompt": self.process_text(prompt)
+            "content": self.process_text(prompt)
         }
         
