@@ -70,8 +70,11 @@ async def process_endpoint(request:Request,project_id:str,process_request: Proce
     do_rest = process_request.do_reset
 
     project_model = await ProjectModel.create_instance(db_client=  request.app.db_client)
+
     project = await project_model.get_project_or_create_one(project_id=project_id)
+
     asset_model = await AssetModel.create_instance(db_client= request.app.db_client)
+    
     project_files_ids = {}
     if process_request.file_id: 
         asset_record = await asset_model.get_asset_record(
