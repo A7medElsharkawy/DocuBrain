@@ -10,3 +10,6 @@ class ResponseStatus(Enum):
     PROCESSING_FAILED = "File processing failed"
     NO_FILES_ERROR = "No files found for the project"
     FILE_ID_ERROR = "No file found with this id"
+    PROJECT_NOT_FOUND_ERROR = "project_not_found"
+    INSERT_INTO_VECTOREDB_ERROR = "insert_into_vectordb_error"
+
