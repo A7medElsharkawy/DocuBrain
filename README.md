@@ -1,4 +1,4 @@
-# Mini-RAG
+# DocuBrain
 
 **A production-style Retrieval-Augmented Generation (RAG) API.** Upload your documents, index them as vector embeddings, and ask questions answered by an LLM that is grounded in your own content.
 
@@ -28,7 +28,7 @@
 
 ## Overview
 
-Mini-RAG is a backend service that turns a collection of documents into a question-answering system:
+DocuBrain is a backend service that turns a collection of documents into a question-answering system:
 
 1. **Upload** PDF or text files to a project.
 2. **Process** them into overlapping text chunks.
@@ -109,10 +109,10 @@ Mini-Rag/
 
 ```bash
 git clone <your-repo-url>
-cd Mini-Rag
+cd DocuBrain
 
-conda create -n mini-rag python=3.10 -y
-conda activate mini-rag
+conda create -n DocuBrain python=3.10 -y
+conda activate DocuBrain
 
 cd src
 pip install -r requirements.txt
@@ -230,10 +230,6 @@ A ready-made Postman collection is available at [`src/assets/mini-rag-app.postma
 | `password authentication failed` | Make `src/.env` and `docker/env/.env.postgres` use the same password. Postgres only reads it when its volume is first created. |
 | `Can't load plugin: sqlalchemy.dialects:driver` | Set a real `sqlalchemy.url` in `alembic.ini`. |
 | `404 Not Found` at `/` | Expected. Routes start with `/api/v1`; see `/docs`. |
-
-## Acknowledgements
-
-This project is based on the open-source [mini-rag](https://github.com/bakrianoo/mini-rag) course by **Abu Bakr Soliman**, explained step by step in an Arabic [YouTube playlist](https://www.youtube.com/playlist?list=PLvLvlVqNQGHCUR2p0b8a0QpVjDUg50wQj).
 
 ## License
 
