@@ -51,7 +51,7 @@ Heavy work (file processing and indexing) runs asynchronously on **Celery worker
 
 ## Architecture
 
-[![Mini-RAG architecture](docs/architecture.svg)](docs/architecture.html)
+[![Mini-RAG architecture](docs/architecture.png)](docs/architecture.html)
 
 > Click the diagram to open the **interactive version** (download `docs/architecture.html` and open it in a browser).
 
